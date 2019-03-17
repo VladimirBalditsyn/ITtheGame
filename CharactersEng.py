@@ -27,7 +27,7 @@ class Ben:
         self.stamina = 70
         self.speed = 50
         self.fairless = 80
-        self.superSection = "ум"
+        self.superSection = "brain"
 
     def show_definition(self):
         print(self.definition)

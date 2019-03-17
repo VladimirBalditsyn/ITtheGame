@@ -54,7 +54,7 @@ class GameStart:
         time.sleep(3)
 
     def choose_character(self):
-        print("\n Now it’s time to choose a character. \n Who do you want to be, a desperate hero? Mike, Ben or"
+        print("\n Now it’s time to choose a character. \n Who do you want to be, a desperate hero? Bill, Ben or"
               "maybe Beverly?)")
         time.sleep(1)
         print("\n \n Enter \" learn about \" and the name of the character( for example, learn out about Bill)"
@@ -62,24 +62,30 @@ class GameStart:
               "or  \" I \" and the name of the character ( for example, I am Bill) to be in his shoes \n")
         s = input()
         while True:
-            if s.lower() == 'learn about bil':
+            if s.lower() == 'learn about bill':
+                print('\n')
                 CharactersEng.showDefinition('Bill')
                 s = input("\nWhat else do you want? \n")
             elif s.lower() == 'learn about beverly':
+                print('\n')
                 CharactersEng.showDefinition('Beverly')
                 s = input("\nWhat else do you want? \n")
             elif s.lower() == 'learn about ben':
+                print('\n')
                 CharactersEng.showDefinition('Ben')
                 s = input("\nWhat else do you want? \n")
             elif s.lower() == 'i am bill':
+                print('\n')
                 print("Penny will beg for mercy! \n")
                 self.character = CharactersEng.Bill()
                 break
             elif s.lower() == 'i am beverly':
+                print('\n')
                 print("Fire-girl !!! \n")
                 self.character = CharactersEng.Beverly()
                 break
             elif s.lower() == 'i am ben':
+                print('\n')
                 print("A good choice. Ben is cool, though not \n")
                 self.character = CharactersEng.Ben()
                 break
@@ -147,7 +153,7 @@ class GameStart:
         clear_screen()
 
         while True:
-            self.run(10, 8)
+            self.run(10, 3)
 
             if self.character.stamina > 0:
                 print("You're doing great! It's time to speed up!")
@@ -161,7 +167,7 @@ class GameStart:
                 clear_screen()
                 pass
 
-            self.run(8, 6)
+            self.run(8, 2.5)
 
             if self.character.stamina > 0:
                 print("Well, you are well done! Now you are close to the exit like never before!")
@@ -175,7 +181,7 @@ class GameStart:
                 clear_screen()
                 pass
 
-            self.run(6, 4)
+            self.run(6, 2)
 
             if self.character.stamina > 0:
                 print("You're an athlete, it turns out!")

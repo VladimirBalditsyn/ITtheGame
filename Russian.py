@@ -62,28 +62,34 @@ class GameStart:
         s = input()
         while True:
             if s.lower() == 'узнать о билле':
+                print('\n')
                 CharactersRus.show_definition('Bill')
                 s = input("\nЧто ещё угодно?\n")
             elif s.lower() == 'узнать о беверли':
+                print('\n')
                 CharactersRus.show_definition('Beverly')
                 s = input("\nЧто ещё угодно?\n")
             elif s.lower() == 'узнать о бене':
+                print('\n')
                 CharactersRus.show_definition('Ben')
                 s = input("\nЧто ещё угодно?\n")
             elif s.lower() == 'я билл':
+                print('\n')
                 print("Пеннивайз будет молить о пощаде!\n")
                 self.character =  CharactersRus.Bill()
                 break
             elif s.lower() == 'я беверли':
+                print('\n')
                 print("Огонь-девушка!!!\n")
                 self.character = CharactersRus.Beverly()
                 break
             elif s.lower() == 'я бен':
+                print('\n')
                 print("Хороший выбор. Бен крут, хоть и нескладен\n")
                 self.character = CharactersRus.Ben()
                 break
             else:
-                print("Хмм... Ты хочешь того, что я не знаю.\nСоберись и попробуй еще\n")
+                print("\nХмм... Ты хочешь того, что я не знаю.\nСоберись и попробуй еще\n")
                 s = input()
 
     def time_end(self, flag):
@@ -146,7 +152,7 @@ class GameStart:
         clear_screen()
 
         while True:
-            self.run(10, 8)
+            self.run(10, 3)
 
             if self.character.stamina > 0:
                 print("Да ты молодец! Пришло время ускориться!")
@@ -160,7 +166,7 @@ class GameStart:
                 clear_screen()
                 pass
 
-            self.run(8, 6)
+            self.run(10, 2.5)
 
             if self.character.stamina > 0:
                 print("Да ты молодец! Сейчас ты близок к выходу как никода!")
@@ -174,7 +180,7 @@ class GameStart:
                 clear_screen()
                 pass
 
-            self.run(6, 4)
+            self.run(6, 2)
 
             if self.character.stamina > 0:
                 print("Да ты спортсмен, оказывается!")
@@ -193,4 +199,3 @@ class GameStart:
 
     def level_two(self):
         print("Уровень 2. Путь к логову зверя")
-        
