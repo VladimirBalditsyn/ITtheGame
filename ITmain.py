@@ -1,6 +1,8 @@
 #It's main game file
 
 import time
+import GameLevels
+import English
 import os
 import sys
 
@@ -14,48 +16,49 @@ def clear_screen():
     """
 
     # Clear command as function of OS
-    command = "cls" if system_name().lower()=="windows" else "clear"
+    command = "cls" if system_name().lower() == "windows" else "clear"
 
     # Action
     system_call(command)
 
 
-class Game:
-    '''The main logic of the game'''
-    def __init__(self):
-        print("IIIIIII  TTTTTTT")
-        time.sleep(0.3)
-        print("   I        T   ")
-        time.sleep(0.3)
-        print("   I        T   ")
-        time.sleep(0.3)
-        print("   I        T   ")
-        time.sleep(0.3)
-        print("   I        T   ")
-        time.sleep(0.3)
-        print("   I        T   ")
-        time.sleep(0.3)
-        print("   I        T   ")
-        time.sleep(0.3)
-        print("IIIIIII     T   ")
-        time.sleep(0.3)
-        print("\nBased on S.King novel\n")
-        time.sleep(0.5)
 
+
+class Game:
+
+    '''The main logic of the game'''
+
+    intro = [
+        "IIIIIII  TTTTTTT",
+        "   I        T   ",
+        "   I        T   ",
+        "   I        T   ",
+        "   I        T   ",
+        "   I        T   ",
+        "   I        T   ",
+        "   I        T   ",
+        "IIIIIII     T   ",
+        "\nBased on S.King novel\n"
+    ]
+
+
+    def __init__(self):
+        self.languages = ["russian", "english"]
+        for i in self.intro:
+            print(i)
+            time.sleep(0.3)
+        time.sleep(0.5)
         s = input("Please, choose suitable language:\n"
-                  "Russian or English (it's very fun, cos texts translated by Google Translate)\n")
+                  "Russian or English (it's very fun, cos texts "
+                  "translated by Google Translate)\n")
         while True:
-            if s.lower() == "russian":
-                import Russian as scences
-                break
-            if s.lower() == "english":
-                import English as scences
+            if s.lower() in self.languages:
+                game = GameLevels.GameStart(s.lower())
                 break
             else:
                 print("\nSorry, I don't know this language.\nTry once more")
                 s = input()
 
-        game = scences.GameStart()
         game.hello()
         clear_screen()
         game.prologue()
@@ -63,8 +66,6 @@ class Game:
         time.sleep(2)
         clear_screen()
         game.level_one()
-
-# PycharmProjects\GameOfTheYear\ITmain.py
 
 
 Game()
