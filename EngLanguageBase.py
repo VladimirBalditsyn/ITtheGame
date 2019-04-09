@@ -228,7 +228,7 @@ Tool_definitions = {'Knife': 'Weak weapon against Pennyz. \nMain'
                             'A penny with such a tool \n'}
 
 Tool_choice_congrats = {'Knife': 'An excellent choice! \nFeel yourself a '
-                                 'ninja! \ N',
+                                 'ninja! \n',
                         'Ax': 'Great! \nGoodling so walking - hacking like '
                               'that'
                               'hack! \n',
@@ -245,7 +245,7 @@ Tool_commands = {'Knife': ['\nLead', '\nRight', '\nLeft', '\nBottom',
 Tool_wrong_input = 'Unfortunately, this is not found in the neighborhood ' \
                    '\nWell house ... Try again: \n'
 
-Your_tool_choice = 'So what will you choose? \ N (to select a weapon, ' \
+Your_tool_choice = 'So what will you choose? \n (to select a weapon, ' \
                    'it’s enough just enter its name and press ENTER) \n'
 
 Level_two_congrats = ['Penny is half dead than alive. \nBut it is not yet'
