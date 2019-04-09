@@ -43,7 +43,7 @@ class Ben:
     def __init__(self):
         self.definition = LB.Ben_definition
         self.stamina = 70
-        self.speed = 50
+        self.speed = 60
         self.fairless = 80
 
     def show_definition(self):

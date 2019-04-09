@@ -41,7 +41,6 @@ class Game:
         "\nBased on S.King novel\n"
     ]
 
-
     def __init__(self):
         self.languages = ["russian", "english"]
         for i in self.intro:
@@ -66,6 +65,8 @@ class Game:
         time.sleep(2)
         clear_screen()
         game.level_one()
+        clear_screen()
+        game.level_two()
 
 
 Game()

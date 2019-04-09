@@ -167,3 +167,117 @@ Level_one_restarts = [
     "Ooooh, no! !!! \n Victory was so close ... \n"
     "Now you can definitely!"
 ]
+
+Skip_level_one = 'Skip level one?'
+
+Yes = 'yes'
+
+Level_two = 'Level 2. Kill the Killer \n'
+
+Level_two_intro = ['Bill, Ben and Beverly managed to escape Pennyvayza.',
+                   'But unfortunately there are no other ten '
+                   'Derry’s children ...',
+                   'Abductions did not stop.',
+                   'On the contrary, the clown seemed to have gone '
+                   'berserk and dragged off sometimes three'
+                   'children per day. \n',
+                   'And you and your friends decided to '
+                   'put an end to this ...',
+                   'And KILL this monster! \n',
+                   'After analyzing the map of Derry, you realized that IT '
+                   'lives in sewers.',
+                   "And all its drains converge under the Well House.",
+                   'Gathering our resolve and gathering '
+                   'friends, you went there',
+                   'to finish this story once and for all. \n']
+
+Level_two_rules = ['The commands will appear on the screen.',
+                   'To attack the monster, you have enough accuracy,'
+                   'enter them without errors (without \"!\")',
+                   'Be attentive and quick, my friend, so that '
+                   'IT does not have time attack you.',
+                   'Press ENTER, as you will be ready']
+
+Level_two_choose_tool = ['It would be stupid, my hero, to go to war with'
+                         "a monster without a weapon.",
+                         'And no less stupid to take him out of the house -',
+                         'Try, explain to mom why you need a huge'
+                         'kitchen cleaver or paternal chainsaw.',
+                         'Therefore, one has to be content with that,'
+                         "what was found among the rubbish "
+                         "near the Well House.",
+                         "Look what you like and what you are ready to go with"
+                         'on the Penny. \n']
+
+Tool_names = {'Knife': 'Knife', 'Ax': 'Ax', 'Tube': 'Pipe'}
+
+Tool_definitions = {'Knife': 'Weak weapon against Pennyz. \nMain'
+                             'its minus - you need to come close enough,'
+                             'to injure a clown \nBut if you are enough'
+                             'quick, my friend, you are all in the teeth! \n',
+                    'Ax': 'A powerful weapon capable of cutting a skull'
+                          'clown into two parts \ntotal for a few I\'ll hit '
+                          '\nBut now the problem: the ax is not an easy thing,'
+                          'and to successfully wield them, you need to be'
+                          'strong enough. \nIf Pennyzweis patted you in'
+                          'chase - take something easier, my friend \n',
+                    'Tube': 'Lightweight, durable, able to inflict enough'
+                            'damage without making special effort. \nThe only'
+                            'minus - does not look very scary. \nTherefore,'
+                            'you need to be brave enough to come up to'
+                            'A penny with such a tool \n'}
+
+Tool_choice_congrats = {'Knife': 'An excellent choice! \nFeel yourself a '
+                                 'ninja! \ N',
+                        'Ax': 'Great! \nGoodling so walking - hacking like '
+                              'that'
+                              'hack! \n',
+                        'Tube': 'Cool! \nIf successful, you can play on'
+                                'her at the clown\'s funeral! \n'}
+
+Tool_commands = {'Knife': ['\nLead', '\nRight', '\nLeft', '\nBottom',
+                           '\nTo the liver', '\nto the heart'],
+                 'Ax': ['\nRuby', '\nKromsay', '\nCan Swipe', '\nC Shoulder',
+                        '\nC head'],
+                 'Tube': ['\nRight', '\nLeft', '\nHear a hearing', '\nTap ',
+                          '\nBy head', '\nBack over back']}
+
+Tool_wrong_input = 'Unfortunately, this is not found in the neighborhood ' \
+                   '\nWell house ... Try again: \n'
+
+Your_tool_choice = 'So what will you choose? \ N (to select a weapon, ' \
+                   'it’s enough just enter its name and press ENTER) \n'
+
+Level_two_congrats = ['Penny is half dead than alive. \nBut it is not yet'
+                      'end \n',
+                      'The clown is dead !!!']
+Level_two_fail = ['Alas, luck was not on your side ... Try again',
+                  'Sad, sad ... The victory was so close ... \n'
+                  'Fly and come back']
+
+Penny_attac_phrases = ['You can\'t handle me!',
+                       "You will fly too!",
+                       'Now you will go to Georgie!']
+
+Level_two_too_slow = 'Slow!'
+
+Press_enter = 'Press ENTER to continue'
+
+Penny_hurt_phrases = ['That\'s what you need, Penny! - {} XP ',
+                      'Apt hit! - {} XP ',
+                      'Go back to hell! - {} XP ']
+
+Broken_tool = 'Ooooh, nooo! \nPennivaise knocked your {}!' \
+              '\nRightly choose another' \
+              'a weapon! \nYou are available:'
+
+You_win = ['Bill, Ben and Beverly sent the clown back to Hell.',
+           'Abductions have stopped. Life in Derry has become a little '
+           'better. ',
+           "Our heroes finished school and went to different cities"
+           'America',
+           'Their life was happy enough for the average'
+           "American."
+           'Bye ... \n'
+           'After 28 years in Derry did not wake up again \n',
+           'IT.']

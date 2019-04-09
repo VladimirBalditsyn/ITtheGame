@@ -1,6 +1,7 @@
 import time
 import random
 import Characters
+import Tools
 from threading import Timer
 from platform import system as system_name # Returns the system/OS name
 from os import system as system_call       # Execute a shell command
@@ -34,6 +35,7 @@ LB = None
 
 def right_import(language):
     Characters.right_import(language)
+    Tools.right_import(language)
     global LB
     LB = languages[language]()
 
@@ -43,6 +45,7 @@ class GameStart:
     def __init__(self, language):
 
         right_import(language)
+        self.tool = None
         self.commands = LB.Level_one_commands
         self.answers = LB.Level_one_answers
         self.character = Characters.Null()
@@ -155,6 +158,10 @@ class GameStart:
     def level_one(self):
         time.sleep(1)
         print(LB.Level_one)
+        s = input(LB.Skip_level_one)
+
+        if s == LB.Yes:
+            return
 
         time.sleep(1)
         self.character.level_one_intro()
@@ -198,7 +205,7 @@ class GameStart:
                 pass
 
         while True:
-            self.run(10, 3)
+            self.run(10, 3.5)
 
             if self.character.stamina > 0:
                 print(LB.Level_one_congrats[1])
@@ -215,7 +222,7 @@ class GameStart:
 
         while True:
 
-            self.run(6, 2)
+            self.run(6, 2.5)
 
             if self.character.stamina > 0:
 
@@ -229,3 +236,168 @@ class GameStart:
                 clear_screen()
                 self.character.stamina = start_stamina
                 pass
+
+    def penny_attac(self, flag):
+        i = random.randint(0, len(LB.Penny_attac_phrases) - 1)
+        print(LB.Level_two_too_slow)
+        print(LB.Penny_attac_phrases[i])
+        print(LB.Press_enter)
+        self.character.stamina -= 5
+        flag[0] = True
+
+    def kill(self, penny_health, limit):
+        flag = [True]
+        while penny_health > limit and self.character.stamina > 0:
+            timeout = 4 * self.character.speed / 100
+            flag = [False]
+            t = Timer(timeout, self.penny_attac, [flag])
+            t.start()
+            i = random.randint(0, len(self.tool.commands) - 1)
+            prompt = "{}!\n".format(self.tool.commands[i])
+            answer = input(prompt)
+
+            t.cancel()
+
+            if flag[0]:
+                t.cancel()
+                pass
+            elif answer.lower() != self.tool.commands[i].lower():
+                print(LB.Penny_attac_phrases[i % len(LB.Penny_attac_phrases)])
+                self.character.stamina -= 5
+                print(LB.Your_health.format(self.character.stamina))
+            else:
+                penny_health -= self.tool.force
+                print(LB.Penny_hurt_phrases[i % len(
+                    LB.Penny_hurt_phrases)].format(self.tool.force))
+
+        return penny_health
+
+    def level_two(self):
+        print(LB.Level_two)
+        time.sleep(1)
+        flag = False
+
+        tool_base = {k: v(self.character) for k, v in Tools.Tool_Base.items()}
+
+        for i in LB.Level_two_intro:
+            print(i)
+            time.sleep(1.5)
+
+        time.sleep(2)
+        clear_screen()
+
+        for i in LB.Level_two_choose_tool:
+            print(i)
+            time.sleep(1)
+
+        time.sleep(1)
+        for i in tool_base.values():
+            print(i.name)
+            time.sleep(0.5)
+            print(i.definition)
+            time.sleep(2)
+            print('\n')
+
+        print(LB.Your_tool_choice)
+
+        while True:
+            s = input()
+            for k, v in LB.Tool_names.items():
+                if v.lower() == s.lower():
+                    self.tool = tool_base[k]
+                    print('\n')
+                    print(LB.Tool_choice_congrats[k])
+                    time.sleep(1)
+                    flag = True
+                    break
+
+            if flag:
+                break
+
+            print(LB.Tool_wrong_input)
+
+        clear_screen()
+
+        for i in LB.Level_two_rules:
+            print(i)
+            time.sleep(1.5)
+
+        input()
+
+        clear_screen()
+
+        your_start_health = self.character.stamina
+        penny_health = 100
+        while True:
+            penny_health = self.kill(penny_health, 50)
+
+            if self.character.stamina > 0:
+                print(LB.Level_two_congrats[0])
+                break
+            else:
+                print(LB.Level_two_fail[0])
+                self.character.stamina = your_start_health
+                time.sleep(3)
+                clear_screen()
+
+        print(LB.Broken_tool.format(self.tool.name.lower()))
+        for i in tool_base.values():
+            if i.name != self.tool.name:
+                print(i.name)
+                time.sleep(0.5)
+
+        while True:
+            timeout = 10 * self.character.speed / 100
+            flag = [False]
+            t = Timer(timeout, self.penny_attac, [flag])
+            t.start()
+
+            i = random.randint(0, len(LB.Penny_attac_phrases) - 1)
+            answer = input()
+
+            t.cancel()
+
+            if flag[0]:
+                t.cancel()
+                pass
+            else:
+                flag[0] = True
+                for k, v in LB.Tool_names.items():
+                    if v.lower() == answer.lower() and answer.lower() != \
+                            self.tool.name.lower():
+                        self.tool = tool_base[k]
+                        print('\n')
+                        print(LB.Tool_choice_congrats[k])
+                        flag[0] = False
+                        break
+
+                if flag[0]:
+                    print(LB.Tool_wrong_input)
+                    print(LB.Penny_attac_phrases[i])
+                    self.character.stamina -= 5
+                    print(LB.Your_health.format(self.character.stamina))
+                else:
+                    break
+
+        your_start_health = self.character.stamina
+
+        while True:
+            penny_health = self.kill(penny_health, 0)
+
+            if self.character.stamina > 0:
+                print(LB.Level_two_congrats[1])
+                break
+            else:
+                print(LB.Level_two_fail[1])
+                self.character.stamina = your_start_health
+                time.sleep(3)
+                clear_screen()
+
+        time.sleep(1)
+
+        clear_screen()
+
+        for i in LB.You_win:
+            print(i)
+            time.sleep(1)
+        time.sleep(2)
